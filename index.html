@@ -30,10 +30,12 @@
     $(document).ready(function() {
       var lineChart = $('<div></div>').appendTo('body').MPChart({chartType: 'line', 
       highchartsOptions: {
-        xAxis: {
+        xAxis: [{
           type:'linear',
-          
-        }
+          labels:{
+            format: '{value}'
+          }
+        }]
     }});                                // Create a line chart
     lineChart.MPChart('setData', data); // Set the chart's data
     });
