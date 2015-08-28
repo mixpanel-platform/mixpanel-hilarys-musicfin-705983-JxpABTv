@@ -16,35 +16,26 @@
       <div id="graph"></div>
     </div>
     <div id="table"></div>
+    
+    
     <script>
-      var eventSelect = $('#eventSelect').MPEventSelect();
-      var propSelect  = $('#propSelect').MPPropertySelect();
-      var dateSelect  = $('#dateSelect').MPDatepicker();
-      var eventGraph  = $('#graph').MPChart({chartType: 'line'});
-      var eventTable  = $('#table').MPTable({
-        showPercentages: true,
-        firstColHeader: 'Event'
-      });
-
-      var runQuery = function() {
-        var eventName = eventSelect.MPEventSelect('value'),
-            propName  = propSelect.MPPropertySelect('value'),
-            dateRange = dateSelect.MPDatepicker('value');
-
-        if (eventName) {
-          MP.api.segment(eventName, propName, dateRange).done(function(results) {
-            eventGraph.MPChart('setData', results);
-            eventTable.MPTable('setData', results);
-          });
+      var data = {
+        'segment1': {
+            '0': 10,
+            '1': 11,
+            '2': 8
         }
       };
-      eventSelect.on('change', function(e, eventName) {
-        propSelect.MPPropertySelect('setEvent', eventName);
-        $("#by").show();
-        runQuery();
-      });
-      propSelect.on('change', runQuery);
-      dateSelect.on('change', runQuery);
-    </script>
+      
+      
+    $(document).ready(function() {
+      var lineChart = $('<div></div>').appendTo('body').MPChart({chartType: 'line', highchartsOptions: {
+        tooltip: {
+          xAxis: 'linear'  // Make tooltip background yellow
+        }
+    }});                                // Create a line chart
+    lineChart.MPChart('setData', data); // Set the chart's data
+    });
+   </script>
   </body>
 </html>
