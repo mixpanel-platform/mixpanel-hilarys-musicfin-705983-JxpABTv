@@ -31,7 +31,8 @@
       var lineChart = $('<div></div>').appendTo('body').MPChart({chartType: 'line', highchartsOptions: {
         xAxis: [{
           type:'linear', 
-          tickInterval: 1 // Make tooltip background yellow
+          tickInterval: 1,
+          ceiling: 60// Make tooltip background yellow
         }]
     }});                                // Create a line chart
     lineChart.MPChart('setData', data); // Set the chart's data
