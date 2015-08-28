@@ -21,21 +21,20 @@
     <script>
       var data = {
         'segment1': {
-          '0': 10,
-          '1': 11,
-          '2': 8
+          0: 10,
+          1: 11,
+          2: 8
         }
       };
       
     $(document).ready(function() {
       var lineChart = $('<div></div>').appendTo('body').MPChart({chartType: 'line', 
       highchartsOptions: {
-        xAxis: [{
-          labels:{
-            format: '{point.x:.2f}'
-          }
-        }]
-    }});                                // Create a line chart
+        xAxis: {
+          type:'linear',
+          
+        }
+    });                                // Create a line chart
     lineChart.MPChart('setData', data); // Set the chart's data
     });
    </script>
